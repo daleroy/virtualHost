@@ -44,3 +44,5 @@ Thumbs.db
 node_modules/*
 
 src/settings/index.js
+
+sites
