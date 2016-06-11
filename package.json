@@ -1,0 +1,9 @@
+{
+    "name": "virtualHost",
+    "main": "index.js",
+    "version": "1.0.0",
+    "dependencies": {
+        "express": "~4.0.x",
+        "vhost": "~3.0.2"
+    }
+}
