@@ -4,6 +4,7 @@
     "version": "1.0.0",
     "dependencies": {
         "express": "~4.0.x",
-        "vhost": "~3.0.2"
+        "vhost": "~3.0.2",
+        "compression": "~1.6.2"
     }
 }
