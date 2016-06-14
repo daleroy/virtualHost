@@ -1,16 +1,16 @@
 global.appRoot = __dirname;
+var sites = global.appRoot + '/sites/';
 var express = require('express');
 var settings = require('./src/settings');
-var createVirtualHost = require('./src/server/createVirtualHost.js');
-
+var cvh = require('./src/server/createVirtualHost.js');
+var vhost = require('vhost');
 var main = express();
 
 settings.hosts.forEach(function(host) {
-    var vHost = express();
+    console.log('Attempting to create Virtual Host for url: %s using middleware: %s.', host.url, host.middleware);
 
-    console.log('Creating Virtual Host for url: %s using middleware: %s.', host.url, host.middleware);
-    vHost.get('/', createVirtualHost(host.url, host.middleware));
-    main.use(vHost);
+    main.use(cvh.createStatic(host.url, host.middleware));
+    main.use(cvh.createRoutes(host.url, host.middleware));
 });
 
 main.listen(settings.port, function() {
