@@ -2,16 +2,20 @@ global.appRoot = __dirname;
 var sites = global.appRoot + '/sites/';
 var express = require('express');
 var compression = require('compression');
+var bodyParser = require('body-parser');
 var settings = require('./src/settings');
 var cvh = require('./src/server/createVirtualHost.js');
 var vhost = require('vhost');
 var main = express();
 
 main.use(compression());
+main.use(bodyParser.json());
+main.use(bodyParser.urlencoded({ extended: true }));
+
 main.use(function(req, res, next) {
     console.log('********** request received **********');
     console.log('req.method: ' + req.method);
-    console.log('req.hostname: ' + req.hostname);
+    console.log('req.originalUrl: ' + req.originalUrl);
     console.log('req.path' + req.path);
     console.log('**************************************');
     next();

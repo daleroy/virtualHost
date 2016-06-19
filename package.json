@@ -5,6 +5,7 @@
     "dependencies": {
         "express": "~4.0.x",
         "vhost": "~3.0.2",
-        "compression": "~1.6.2"
+        "compression": "~1.6.2",
+        "body-parser": "~1.15.1"
     }
 }
